@@ -1,4 +1,4 @@
-package A01;
+package a01;
 import edu.princeton.cs.algs4.*;
 
 import java.util.Arrays;
@@ -38,12 +38,16 @@ public class Percolation {
 		if(!grid[i][j]) {
 			grid[i][j] = true;
 			open++;
+			System.out.println(open);
 		}
 		
 		if(i == 0) wqu.union(getIndex(i,j), 0);
 		if(i == size -1) wqu.union(getIndex(i,j), size + 1);
 		
 		if(i > 0 && grid[i-1][j]) wqu.union(getIndex(i,j), getIndex(i-1, j));
+		if(j > 0 && grid[i][j -1]) wqu.union(getIndex(i,j), getIndex(i, j-1));
+		if(i < N-1 && grid[i+1][j]) wqu.union(getIndex(i,j), getIndex(i+1, j));
+		if(j < N-1 && grid[i][j+1]) wqu.union(getIndex(i,j), getIndex(i, j+1));
 		
 	}
 	
@@ -60,7 +64,7 @@ public class Percolation {
 	}
 	
 	public int numberOfOpenSites() {
-		return 0;
+		return open;
 		
 	}
 	

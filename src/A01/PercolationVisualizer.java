@@ -15,7 +15,7 @@
  *  with with site (0, 0) in the upper left-hand corner.
  *
  ******************************************************************************/
-package A01;
+package a01;
 import java.awt.Font;
 
 import edu.princeton.cs.algs4.In;
@@ -41,7 +41,6 @@ public class PercolationVisualizer {
                     StdDraw.setPenColor(StdDraw.BOOK_LIGHT_BLUE);
                 }
                 else if (percolation.isOpen(row, col)) {
-                	//System.out.println(row + " " + col);
                     StdDraw.setPenColor(StdDraw.WHITE);
                 }
                 else {

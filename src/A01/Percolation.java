@@ -59,7 +59,9 @@ public class Percolation {
 	}
 	
 	public boolean isFull(int i, int j) {
-		return false;
+		inbounds(i,j);
+		
+		return wqu.connected(0, getIndex(i,j));
 		
 	}
 	
@@ -88,5 +90,4 @@ public class Percolation {
 					" must be between 0 and " + (N - 1));
 		}
 	}
-
 }

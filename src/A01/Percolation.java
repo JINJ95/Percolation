@@ -42,7 +42,7 @@ public class Percolation {
 		}
 		
 		if(i == 0) wqu.union(getIndex(i,j), 0);
-		if(i == size -1) wqu.union(getIndex(i,j), size + 1);
+		if(i == N - 1) wqu.union(getIndex(i,j), size + 1);
 		
 		if(i > 0 && grid[i-1][j]) wqu.union(getIndex(i,j), getIndex(i-1, j));
 		if(j > 0 && grid[i][j -1]) wqu.union(getIndex(i,j), getIndex(i, j-1));

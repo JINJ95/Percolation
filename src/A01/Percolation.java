@@ -16,9 +16,7 @@ public class Percolation {
 		this.N = N;
 		size = N * N;
 		grid = new boolean[N][N];
-		//wqu = new WeightedQuickUnionUF(size * size + 2);
 		wqu = new WeightedQuickUnionUF(size + 2);
-
 		open = 0;
 		
 	}
@@ -44,7 +42,7 @@ public class Percolation {
 		}
 		
 		if(i == 0) wqu.union(getIndex(i,j), 0);
-		if(i == N - 1) wqu.union(getIndex(i,j), size + 1);
+		if(i == N - 1 && wqu.connected(0, getIndex(i, j))) wqu.union(getIndex(i,j), size + 1);
 		
 		if(i > 0 && grid[i-1][j]) wqu.union(getIndex(i,j), getIndex(i-1, j));
 		if(j > 0 && grid[i][j-1]) wqu.union(getIndex(i,j), getIndex(i, j-1));
@@ -78,6 +76,7 @@ public class Percolation {
 	}
 	
 	private int getIndex(int i, int j) {
+		inbounds(i,j);
 		return N * i + j;
 	}
 	

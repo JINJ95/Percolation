@@ -42,12 +42,23 @@ public class Percolation {
 		}
 		
 		if(i == 0) wqu.union(getIndex(i,j), 0);
+		//if(i == N - 1) wqu.union(getIndex(i,j), size + 1);
 		if(i == N - 1 && wqu.connected(0, getIndex(i, j))) wqu.union(getIndex(i,j), size + 1);
 		
-		if(i > 0 && grid[i-1][j]) wqu.union(getIndex(i,j), getIndex(i-1, j));
+		if(i > 0 && grid[i-1][j]) {
+			wqu.union(getIndex(i,j), getIndex(i-1, j));
+			if((i == N-2) && isOpen(i+1,j)) wqu.union(getIndex(i+1, j), size+1);
+		}
 		if(j > 0 && grid[i][j-1]) wqu.union(getIndex(i,j), getIndex(i, j-1));
-		if(i < N-1 && grid[i+1][j]) wqu.union(getIndex(i,j), getIndex(i+1, j));
+		if(i < N-1 && grid[i+1][j]) {
+			wqu.union(getIndex(i,j), getIndex(i+1, j));
+			if(i == N-1) wqu.union(getIndex(i+1, j), size+1);
+		}
 		if(j < N-1 && grid[i][j+1]) wqu.union(getIndex(i,j), getIndex(i, j+1));
+		
+		
+		//if(i == N - 1 && wqu.connected(0, getIndex(i, j))) wqu.union(getIndex(i,j), size + 1);
+		//if(wqu.connected(getIndex(i,j),))
 		
 	}
 	

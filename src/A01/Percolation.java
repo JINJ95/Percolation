@@ -30,6 +30,8 @@ public class Percolation {
 		System.out.println();
 		
 		System.out.println(perc1.getIndex(0,0));
+		
+		//System.out.println(perc1.wqu.parent.length);
 	}
 	
 	public void open(int i, int j) {
@@ -37,7 +39,6 @@ public class Percolation {
 		if(!grid[i][j]) {
 			grid[i][j] = true;
 			open++;
-			System.out.println(open);
 		}
 		
 		if(i == 0) wqu.union(getIndex(i,j), 0);
@@ -61,7 +62,6 @@ public class Percolation {
 	
 	public boolean isFull(int i, int j) {
 		inbounds(i,j);
-		System.out.println(i + " " + j);
 		return wqu.connected(0, getIndex(i,j));
 		
 	}
@@ -78,6 +78,7 @@ public class Percolation {
 	
 	private int getIndex(int i, int j) {
 		inbounds(i,j);
+		//System.out.println(i + " " + j );
 		return N * i + j;
 	}
 	
